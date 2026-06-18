@@ -13,6 +13,7 @@
                 <t t-set="url" t-value="'/my/delivery-notes'" />
                 <t t-set="text">Follow or download your delivery notes</t>
                 <t t-set="placeholder_count" t-value="'dn_count'" />
+                <t t-set="show_count" t-value="True"/>
             </t>
         </div>
     </template>
