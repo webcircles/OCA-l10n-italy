@@ -9,7 +9,6 @@
     >
         <div id="portal_client_category" position="inside">
             <t t-call="portal.portal_docs_entry">
-                <t t-set="icon" t-value="'/account/static/src/img/DN.svg'" />
                 <t t-set="title">Your Delivery Notes</t>
                 <t t-set="url" t-value="'/my/delivery-notes'" />
                 <t t-set="text">Follow or download your delivery notes</t>
