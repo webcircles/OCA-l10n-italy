@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-18 11:09+0000\n"
+"PO-Revision-Date: 2026-07-20 08:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -266,6 +266,11 @@ msgid "No Declaration of Intent found for %s."
 msgstr "Nessuna dichiarazione di intento trovata per %s."
 
 #. module: l10n_it_edi_doi_extension
+#: model:ir.model.fields,field_description:l10n_it_edi_doi_extension.field_l10n_it_edi_doi_declaration_of_intent__number
+msgid "Number"
+msgstr "Numero"
+
+#. module: l10n_it_edi_doi_extension
 #: model_terms:ir.ui.view,arch_db:l10n_it_edi_doi_extension.declaration_of_intent_search
 msgid "Partner"
 msgstr "Partner"
@@ -305,6 +310,11 @@ msgstr "Ricevuta da clienti"
 #: model:ir.model.fields,field_description:l10n_it_edi_doi_extension.field_account_move_doi__sequence
 msgid "Sequence"
 msgstr "Sequenza"
+
+#. module: l10n_it_edi_doi_extension
+#: model:ir.model.fields,help:l10n_it_edi_doi_extension.field_l10n_it_edi_doi_declaration_of_intent__number
+msgid "Sequential number for internal reference"
+msgstr "Numero sequenziale per riferimento interno"
 
 #. module: l10n_it_edi_doi_extension
 #: model_terms:ir.ui.view,arch_db:l10n_it_edi_doi_extension.declaration_of_intent_search
