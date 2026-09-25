@@ -9,10 +9,12 @@ from odoo.addons.l10n_it_account.migration_tools import (
 )
 
 OLD_MODULES = [
+    "account_vat_period_end_statement",
     "l10n_it_account_tax_kind",
     "l10n_it_declaration_of_intent",
     "l10n_it_fatturapa",
     "l10n_it_fatturapa_pec",
+    "l10n_it_vat_statement_communication",
 ]
 
 # Old OCA modules superseded in v18: split payment and reverse charge are now
@@ -27,18 +29,24 @@ OLD_MODULES_TO_REMOVE = [
 # Old modules migrated here but uninstalled by their v18 replacement module
 # (marked "to install" by the per-module migration functions below), so we must
 # not remove them here:
-#   l10n_it_declaration_of_intent -> l10n_it_edi_doi_extension
-#   l10n_it_fatturapa             -> l10n_it_edi_extension
-#   l10n_it_fatturapa_pec         -> l10n_it_edi_pec
+#   account_vat_period_end_statement    -> l10n_it_account_vat_period_end_settlement
+#   l10n_it_declaration_of_intent       -> l10n_it_edi_doi_extension
+#   l10n_it_fatturapa                   -> l10n_it_edi_extension
+#   l10n_it_fatturapa_pec               -> l10n_it_edi_pec
+#   l10n_it_vat_statement_communication -> l10n_it_vat_settlement_communication
+# (the two renamed modules are merged into their replacement by its
+# `pre_init_hook`, via `openupgrade.update_module_names(merge_modules=True)`).
 # The replacement module converts the old data in its init hooks only if
 # `openupgrade.is_module_installed()` is true for the old module, which excludes
 # the 'to remove' state: marking the old module 'to remove' here (STEP 3, first
 # part of the loading) would make the replacement (installed in the second
 # part) silently skip the data conversion.
 MODULES_REMOVED_BY_REPLACEMENT = {
+    "account_vat_period_end_statement",
     "l10n_it_declaration_of_intent",
     "l10n_it_fatturapa",
     "l10n_it_fatturapa_pec",
+    "l10n_it_vat_statement_communication",
 }
 
 
@@ -231,6 +239,24 @@ def _l10n_it_account_tax_kind_migration(env):
     update_table(
         env, table, "account_tax_kind", {"l10n_it_exempt_reason": "code"}, condition
     )
+
+
+def _account_vat_period_end_statement_migration(env):
+    """
+    Install "l10n_it_account_vat_period_end_settlement", which replaces
+    the old account_vat_period_end_statement module and merges it.
+    """
+    _force_install_with_dependencies(
+        env.cr, "l10n_it_account_vat_period_end_settlement"
+    )
+
+
+def _l10n_it_vat_statement_communication_migration(env):
+    """
+    Install "l10n_it_vat_settlement_communication", which replaces
+    the old l10n_it_vat_statement_communication module and merges it.
+    """
+    _force_install_with_dependencies(env.cr, "l10n_it_vat_settlement_communication")
 
 
 def _l10n_it_declaration_of_intent_migration(env):
