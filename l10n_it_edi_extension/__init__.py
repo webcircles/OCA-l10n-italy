@@ -383,6 +383,20 @@ def _l10n_it_fatturapa_post_migration_delivery_data(env):
             am.ftpa_incoterms
         FROM account_move am
         LEFT JOIN res_partner rp ON am.carrier_id = rp.id
+        WHERE
+            am.carrier_id IS NOT NULL
+            OR NULLIF(TRIM(am.transport_vehicle), '') IS NOT NULL
+            OR NULLIF(TRIM(am.transport_reason), '') IS NOT NULL
+            OR COALESCE(am.number_items, 0) <> 0
+            OR NULLIF(TRIM(am.description), '') IS NOT NULL
+            OR NULLIF(TRIM(am.unit_weight), '') IS NOT NULL
+            OR COALESCE(am.gross_weight, 0) <> 0
+            OR COALESCE(am.net_weight, 0) <> 0
+            OR am.pickup_datetime IS NOT NULL
+            OR am.transport_date IS NOT NULL
+            OR NULLIF(TRIM(am.delivery_address), '') IS NOT NULL
+            OR am.delivery_datetime IS NOT NULL
+            OR NULLIF(TRIM(am.ftpa_incoterms), '') IS NOT NULL
     """)
     rows = env.cr.fetchall()
     invoice_map = {}
