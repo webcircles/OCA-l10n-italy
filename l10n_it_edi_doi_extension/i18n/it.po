@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-07-20 08:36+0000\n"
+"PO-Revision-Date: 2026-10-11 08:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -220,6 +220,11 @@ msgid "Journal Entry"
 msgstr "Registrazione contabile"
 
 #. module: l10n_it_edi_doi_extension
+#: model:ir.model,name:l10n_it_edi_doi_extension.model_account_move_line
+msgid "Journal Item"
+msgstr "Movimento contabile"
+
+#. module: l10n_it_edi_doi_extension
 #: model:ir.model.fields,field_description:l10n_it_edi_doi_extension.field_account_move_doi__write_uid
 msgid "Last Updated by"
 msgstr "Ultimo aggiornamento di"
@@ -341,6 +346,16 @@ msgstr "Imposta"
 #: code:addons/l10n_it_edi_doi_extension/models/account_move_doi.py:0
 msgid "The amount covered by a declaration cannot be negative."
 msgstr "L'importo oggetto di una dichiarazione non può essere negativo."
+
+#. module: l10n_it_edi_doi_extension
+#. odoo-python
+#: code:addons/l10n_it_edi_doi_extension/models/account_move_line.py:0
+msgid ""
+"The invoice line %(line_name)s must include only the Tax %(doi_tax)s for the "
+"Declaration of Intent."
+msgstr ""
+"La riga della fattura %(line_name)s deve includere esclusivamente l'imposta %"
+"(doi_tax)s relativa alla dichiarazione d'intento."
 
 #. module: l10n_it_edi_doi_extension
 #: model:ir.model.fields,field_description:l10n_it_edi_doi_extension.field_account_move_doi__declaration_threshold
